@@ -1,12 +1,12 @@
 #!/bin/bash
 
-IMAGE="path/jupyter/cv:gpu-python3.10-tf2.13.0"
+IMAGE="ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0"
 PROJECT_DIRNAME=$(basename $1)
 NAME="jupyter_"${PROJECT_DIRNAME}
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 WD="${SCRIPTPATH}/../${PROJECT_DIRNAME}"
 
-# docker pull ${IMAGE}
+docker pull ${IMAGE}
 docker stop ${NAME}
 docker run \
     --runtime=nvidia \

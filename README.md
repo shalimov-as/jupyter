@@ -15,13 +15,10 @@
 
 Инструкция по установке [nvidia-docker2](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit)
 
-На серверах `office-neuroweb-1` и `office-neuroweb-2` установка не требуется.
-
 # Структура каталогов
 
 Для корректной работы, необходима следующая структура каталогов:
 ```
-
 projects/ # проекты
     yolox/ # проект с YOLOX
         notebooks/ # jupyter ноутбуки проекта YOLOX
@@ -40,12 +37,11 @@ projects/ # проекты
 
 # Загрузка образа
 
-Сейчас используется один образ `path/jupyter/cv:gpu-python3.8-tf2.5.0`
+Сейчас используется один образ `ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0`
 
 Загрузка на машину разработчика
 ```shell
-docker login registry.gitlab.inventos.ru # авторизация в registry (логин и пароль от gitlab)
-docker pull path/jupyter/cv:gpu-python3.8-tf2.5.0
+docker pull ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0
 ```
 # Пример запуска
 
@@ -63,3 +59,5 @@ docker pull path/jupyter/cv:gpu-python3.8-tf2.5.0
 ```shell
 docker logs jupyter_yolox
 ```
+
+Пароль для доступа - `admin`
