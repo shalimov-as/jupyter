@@ -5,7 +5,9 @@
 
 Нужен для быстрой проверки гипотез и визуализации данных на сервере разработчика
 
-# Установка
+**Пароль для доступа в jupyter - `admin`**
+
+# Установка (Linux)
 
 Для работы требуется docker, nvidia-docker2. Протестирована работа для Docker версии 20.10.12.
 
@@ -15,18 +17,26 @@
 
 Инструкция по установке [nvidia-docker2](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit)
 
+# Установка (Windows)
+
+- Перейдите на [официальную страницу Docker](https://www.docker.com/products/docker-desktop) и скачайте установщик Docker Desktop для Windows.
+- Запустите установщик и следуйте инструкциям на экране.
+- Для возможности работать с видеокартой, необходимо использовать WSL. [Подробнее про установку](https://www.youtube.com/watch?v=YozfiLI1ogY)
+- После установки запустите Docker Desktop через меню "Пуск".
+
 # Структура каталогов
 
 Для корректной работы, необходима следующая структура каталогов:
 ```
 projects/ # проекты
-    yolox/ # проект с YOLOX
-        notebooks/ # jupyter ноутбуки проекта YOLOX
-            train_yolox.ipynb
-            val_yolox.ipynb
+    project_1/ # проект
+        notebooks/ # jupyter ноутбуки проекта project_1
+            train_project_1.ipynb
+            val_project_1.ipynb
         ...
-    jupyter/ # Проект Jupyter CV container
+    jupyter/ # Проект Jupyter
         run.sh
+        run.ps1
     ...
 ```
 ## Область видимости 
@@ -43,21 +53,33 @@ projects/ # проекты
 ```shell
 docker pull ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0
 ```
-# Пример запуска
+# Пример запуска (Linux)
 
 Для запуска, необходимо выполнить [run.sh](./run.sh)
 
 Первым аргументом нужно передать название проекта из структуры каталогов.
 Для YOLOX это yolox (можно использовать tab и использовать относительные пути до проекта):
 ```shell
-./jupyter/run.sh yolox/
+./jupyter/run.sh project_1/
 ```
 
 В консоли должна отобразиться ссылка вида `http://127.0.0.1:8888/?token=` для доступа к ноутбукам
 
-Также её можно найти в логах контейнера `jupyter_yolox`:
+Также её можно найти в логах контейнера `jupyter_project_1`:
 ```shell
-docker logs jupyter_yolox
+docker logs jupyter_project_1
 ```
 
-Пароль для доступа - `admin`
+# Пример запуска (Windows)
+
+Для запуска, необходимо выполнить [run.ps1](./run.ps1)
+
+Первым аргументом нужно передать название проекта из структуры каталогов.
+Для YOLOX это yolox (можно использовать tab и использовать относительные пути до проекта):
+```shell
+.\jupyter\run.ps1 .\project_1\
+```
+
+В Docker Desktop для запущенного контейнера, во вкладке logs  должна отобразиться ссылка вида `http://127.0.0.1:8888/?token=` для доступа к ноутбукам.
+
+Пароль для доступа в jupyter - `admin`
