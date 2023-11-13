@@ -410,7 +410,7 @@ RUN pip install --no-cache-dir --upgrade \
     fix-permissions "/home/${NB_USER}"
 
 
-ARG TF_WHL=tensorflow-2.13.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+ARG TF_WHL=tensorflow-2.10.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 RUN curl -sSLO https://storage.googleapis.com/tensorflow/linux/gpu/${TF_WHL}
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install --no-cache-dir ./${TF_WHL} tensorflow-hub && \

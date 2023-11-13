@@ -47,18 +47,17 @@ projects/ # проекты
 
 # Загрузка образа
 
-Сейчас используется один образ `ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0`
+Сейчас используется один образ `ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.10.0`
 
 Загрузка на машину разработчика
 ```shell
-docker pull ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0
+docker pull ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.10.0
 ```
 # Пример запуска (Linux)
 
 Для запуска, необходимо выполнить [run.sh](./run.sh)
 
-Первым аргументом нужно передать название проекта из структуры каталогов.
-Для YOLOX это yolox (можно использовать tab и использовать относительные пути до проекта):
+Первым аргументом нужно передать название проекта из структуры каталогов:
 ```shell
 ./jupyter/run.sh project_1/
 ```

@@ -1,5 +1,5 @@
 # Define variables
-$IMAGE="ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.13.0"
+$IMAGE="ghcr.io/shalimov-as/jupyter:gpu-python3.10-tf2.10.0"
 $PROJECT_DIRNAME = Split-Path -Leaf -Path $args[0]
 $NAME="jupyter_"+$PROJECT_DIRNAME
 $SCRIPTPATH= Split-Path $MyInvocation.MyCommand.Path
